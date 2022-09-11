@@ -1,0 +1,321 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+Fonts
+*/
+
+body {
+  margin: 0.25rem 0.5rem;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+BG Color
+*/
+
+html {
+  background-color: #cccccc24;
+}
+
+/*
+Links
+*/
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/*
+Loading
+*/
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid blue;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+
+/*
+Main Layout
+*/
+
+.App {
+  display: grid;
+}
+
+.title-wrapper {
+  display: grid;
+  justify-items: center;
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.title-top:hover {
+  text-shadow: 0 0 3px green;
+  cursor: pointer;
+}
+
+.statusBox {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.statusLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'streamer status'
+    'game game';
+  border-top: 1px solid blue;
+  border-left: 1px solid blue;
+  border-right: 1px solid blue;
+}
+
+.statusLine > span {
+  padding: 0.5rem;
+}
+.statusLine .streamer {
+  grid-area: streamer;
+  text-align: left;
+}
+.statusLine .status {
+  grid-area: status;
+  display: flex;
+  justify-content: center;
+}
+.statusLine .channelInfo {
+  margin: 0.5rem 3rem;
+  grid-area: game;
+  display: grid;
+  grid-template-columns: 53px 1fr;
+}
+.statusLine .infoHeader {
+  font-weight: bold;
+}
+.statusLine .channelInfo > div {
+  margin-bottom: 10px;
+}
+.statusLine .channelTitle {
+  word-break: break-word;
+}
+
+.statusLine:last-child {
+  border-bottom: 1px solid blue;
+}
+
+.statusLine:hover {
+  background-color: #bcffbc;
+}
+
+.statusLine.live .streamer {
+  font-weight: bold;
+}
+.statusLine.live .status {
+  color: red;
+}
+.statusLine.offline .status {
+  color: gray;
+}
+
+.streams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/*
+Media Queries
+*/
+
+@media (max-width: 869px) {
+  .streams {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 0 8rem;
+  }
+}
+
+@media (max-width: 669px) {
+  .streams {
+    padding: 0;
+  }
+}
